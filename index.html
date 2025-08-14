@@ -1,5 +1,214 @@
-<html>
-  <body>
-    <h1>Welcome to Evan Cwikla's Portfolio</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal site and portfolio hosted on GitHub Pages." />
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Personal site and portfolio hosted on GitHub Pages." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐙</text></svg>">
+  <style>
+    :root {
+      --bg: #0b0f19; /* dark */
+      --surface: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #60a5fa; /* blue-400 */
+      --accent: #a78bfa;  /* violet-400 */
+      --ring: rgba(96,165,250,.35);
+      --card: #0f172a; /* slate-900 */
+    }
+    [data-theme="light"]{
+      --bg: #f7fafc; /* light */
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb; /* blue-600 */
+      --accent: #7c3aed;  /* violet-600 */
+      --ring: rgba(37,99,235,.25);
+      --card: #ffffff;
+    }
+
+    * { box-sizing:border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.15), transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, rgba(167,139,250,.15), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .container { max-width: 1100px; padding: 0 1rem; margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid rgba(148,163,184,.15); }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .75rem 0; }
+    .nav a { color: var(--muted); text-decoration:none; font-weight:600; margin-left: 1rem; }
+    .nav a:hover { color: var(--text); }
+    .brand { display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; color: var(--text); text-decoration:none; }
+    .brand .logo { width: 34px; height: 34px; border-radius: 10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--primary), var(--accent)); color:white; font-weight:900; }
+
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius: 12px; border:1px solid rgba(148,163,184,.25); color: var(--text); text-decoration:none; font-weight:600; background: color-mix(in oklab, var(--surface) 70%, transparent); }
+    .btn:hover { border-color: rgba(148,163,184,.45); }
+    .btn.primary { background: linear-gradient(135deg, var(--primary), var(--accent)); border: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+
+    /* Hero */
+    .hero { padding: 4rem 0 2rem; display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; }
+    .hero h1 { font-size: clamp(2.2rem, 2.5vw + 1.2rem, 3.5rem); line-height: 1.15; margin:.25rem 0; }
+    .gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .tagline { color: var(--muted); font-size: 1.1rem; }
+    .hero .actions { display:flex; gap:.8rem; margin-top: 1rem; flex-wrap: wrap; }
+    .avatar { width: 160px; height: 160px; border-radius: 20px; background: var(--card); border:1px solid rgba(148,163,184,.25); box-shadow: 0 10px 30px rgba(0,0,0,.25); display:grid; place-items:center; font-size: 64px; }
+
+    /* Sections */
+    section { padding: 3rem 0; }
+    h2 { font-size: 1.6rem; margin: 0 0 1rem; }
+
+    /* Cards */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+    .card { grid-column: span 12; border:1px solid rgba(148,163,184,.25); border-radius: 16px; padding:1rem; background: var(--card); transition: transform .15s ease, box-shadow .15s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+    .card h3 { margin:.2rem 0 .4rem; font-size:1.1rem; }
+    .card p { color: var(--muted); margin:0; }
+
+    @media (min-width: 700px){
+      .card { grid-column: span 6; }
+    }
+    @media (min-width: 1000px){
+      .card { grid-column: span 4; }
+    }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(148,163,184,.15); padding: 2rem 0; color: var(--muted); }
+
+    /* Form */
+    form { display:grid; gap:.8rem; }
+    input, textarea { padding:.8rem 1rem; border-radius:12px; border:1px solid rgba(148,163,184,.35); background: color-mix(in oklab, var(--surface) 85%, transparent); color: var(--text); }
+    input:focus, textarea:focus { outline: 2px solid var(--ring); border-color: transparent; }
+
+    /* Utilities */
+    .muted { color: var(--muted); }
+    .spaced { margin-top: 1rem; }
+    .row { display:flex; gap:.75rem; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="logo">GH</span>
+        <span>Your Name</span>
+      </a>
+      <nav class="row">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" id="themeToggle" role="button" aria-label="Toggle theme">🌗</a>
+        <a class="btn" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div>
+        <p class="muted">Hello, I'm</p>
+        <h1><span class="gradient">Your Name</span></h1>
+        <p class="tagline">I build clean, accessible web experiences. Here's a simple single‑file site you can deploy on <strong>GitHub Pages</strong>.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See Projects</a>
+          <a class="btn" href="resume.pdf" download>Download Résumé</a>
+        </div>
+        <p class="muted spaced">→ Star this site's repo: <a href="https://github.com/your-username/your-repo" target="_blank" rel="noopener">github.com/your-username/your-repo</a></p>
+      </div>
+      <div class="avatar" aria-hidden="true">💻</div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Project One</h3>
+          <p>A short description of what it does, the tech you used, and the result.</p>
+          <p class="spaced">
+            <a class="btn" href="https://github.com/your-username/project-one">Source</a>
+            <a class="btn" href="https://your-username.github.io/project-one/">Live Demo</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project Two</h3>
+          <p>Another cool thing. Keep it concise and impactful.</p>
+          <p class="spaced">
+            <a class="btn" href="https://github.com/your-username/project-two">Source</a>
+            <a class="btn" href="https://your-username.github.io/project-two/">Live Demo</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project Three</h3>
+          <p>What problem does it solve? What did you learn?</p>
+          <p class="spaced">
+            <a class="btn" href="https://github.com/your-username/project-three">Source</a>
+            <a class="btn" href="#">Live Demo</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>I'm a developer/designer who loves building fast, minimal sites. My interests include accessibility, performance, and developer tooling.</p>
+      <p class="muted">Tech: HTML, CSS, JavaScript, Python, React, Node, and a sprinkle of Go and Rust.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+        <input name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" rows="5" placeholder="Message" required></textarea>
+        <div class="row">
+          <button class="btn primary" type="submit">Send</button>
+          <button class="btn" type="reset">Reset</button>
+        </div>
+      </form>
+      <p class="muted spaced">Prefer social? Find me on <a href="https://github.com/your-username">GitHub</a> and <a href="https://www.linkedin.com/in/your-handle">LinkedIn</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Your Name. Built with vanilla HTML/CSS/JS. Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (persist to localStorage)
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved){ root.setAttribute('data-theme', saved); }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', current);
+      localStorage.setItem('theme', current);
+    });
+
+    // Respect prefers-color-scheme on first load
+    if(!saved){
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
+    }
+  </script>
+</body>
 </html>
