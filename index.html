@@ -9,49 +9,135 @@
   <meta property="og:description" content="Personal site and portfolio of Evan Cwikla hosted on GitHub Pages." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐙</text></svg>">
-  <!-- Styles omitted for brevity; same as before -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      overflow: hidden;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #1e90ff;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 0;
+      background: #fff;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #1e90ff;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #1e90ff;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      background: #0f6cd1;
+    }
+    section {
+      background: #fff;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <a class="brand" href="#home">
-        <span class="logo">EC</span>
-        <span>Evan Cwikla</span>
-      </a>
-      <nav class="row">
+    <div class="container">
+      <h1>Evan Cwikla</h1>
+      <nav>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a class="btn" id="themeToggle" role="button" aria-label="Toggle theme">🌗</a>
-        <a class="btn" href="https://github.com/evancwikla" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/EvanCwikla" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section id="home" class="hero">
+    <section class="hero">
       <div>
-        <p class="muted">Hello, I'm</p>
-        <h1><span class="gradient">Evan Cwikla</span></h1>
-        <p class="tagline">I build clean, accessible web experiences. Here's a simple single‑file site you can deploy on <strong>GitHub Pages</strong>.</p>
-        <div class="actions">
-          <a class="btn primary" href="#projects">See Projects</a>
-          <a class="btn" href="resume.pdf" download>Download Résumé</a>
-        </div>
-        <p class="muted spaced">→ Star this site's repo: <a href="https://github.com/evancwikla/your-repo" target="_blank" rel="noopener">github.com/evancwikla/your-repo</a></p>
+        <h1>Hello, I'm Evan Cwikla</h1>
+        <p>I build clean, accessible web experiences. Here's a simple single‑file site you can deploy on GitHub Pages.</p>
+        <a class="btn" href="#projects">See Projects</a>
+        <a class="btn" href="resume.pdf" download>Download Résumé</a>
       </div>
-      <div class="avatar" aria-hidden="true">💻</div>
     </section>
 
-    <!-- The rest remains unchanged except replacing "Your Name" with "Evan Cwikla" in About and Footer -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <p>Highlight some of your top work here with links and short descriptions.</p>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I'm a developer/designer who loves building fast, minimal sites. My interests include accessibility, performance, and developer tooling.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+        <input name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" rows="5" placeholder="Message" required></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
   </main>
 
   <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Evan Cwikla. Built with vanilla HTML/CSS/JS. Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>.</p>
-    </div>
+    <p>© <span id="year"></span> Evan Cwikla | Hosted on GitHub Pages</p>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
