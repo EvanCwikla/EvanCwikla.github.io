@@ -80,6 +80,11 @@
     }
 
     footer { border-top: 1px solid rgba(148,163,184,.15); padding: 2rem 0; color: var(--muted); }
+
+    /* Contact styling */
+    .contact-info p { margin: 0.3rem 0; }
+    .contact-info a { color: var(--primary); text-decoration: none; }
+    .contact-info a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -92,6 +97,7 @@
       <nav class="row">
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
+        <a href="#contact">Contact</a>
         <a class="btn" id="themeToggle" role="button" aria-label="Toggle theme">🌗</a>
       </nav>
     </div>
@@ -105,6 +111,7 @@
         <p class="tagline">I build clean, accessible web experiences.</p>
         <div class="actions">
           <a class="btn primary" href="#projects">See Projects</a>
+          <a class="btn" href="#contact">Get in Touch</a>
         </div>
       </div>
       <div class="avatar" aria-hidden="true">💻</div>
@@ -132,6 +139,16 @@
       <h2>About</h2>
       <p>I'm a developer/designer who loves building fast, minimal sites. My interests include accessibility, performance, and developer tooling.</p>
       <p class="muted">Tech: HTML, CSS, JavaScript, Python, React, Node, and a sprinkle of Go and Rust.</p>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:evan.cwikla11@gmail.com">evan.cwikla11@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/evan-cwikla" target="_blank">linkedin.com/in/evan-cwikla</a></p>
+        <p>Phone: <a href="tel:8479702334">847-970-2334</a></p>
+      </div>
     </section>
   </main>
 
