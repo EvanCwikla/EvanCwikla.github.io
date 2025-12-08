@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pygame Game — Evan Cwikla Portfolio</title>
+    <meta name="description" content="Details for the Pygame Puzzle-Adventure Game project." />
+    <meta property="og:title" content="Pygame Puzzle-Adventure Game" />
+    <meta property="og:description" content="A complex 2D grid-based game showcasing OOP, pathfinding, and dynamic hazards." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐙</text></svg>">
+    <style>
+        /* Re-paste all your CSS here or link to an external CSS file */
+        :root {
+            --bg: #0b0f19;
+            --surface: #111827;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --primary: #60a5fa;
+            --accent: #a78bfa;
+            --ring: rgba(96,165,250,.35);
+            --card: #0f172a;
+        }
+        [data-theme="light"]{
+            --bg: #f7fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --primary: #2563eb;
+            --accent: #7c3aed;
+            --ring: rgba(37,99,235,.25);
+            --card: #ffffff;
+        }
+
+        * { box-sizing:border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.15), transparent 60%),
+                         radial-gradient(900px 500px at 110% 10%, rgba(167,139,250,.15), transparent 60%),
+                         var(--bg);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; padding: 0 1rem; margin: 0 auto; }
+        header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid rgba(148,163,184,.15); }
+        .nav { display:flex; align-items:center; justify-content:space-between; padding: .75rem 0; }
+        .nav a { color: var(--muted); text-decoration:none; font-weight:600; margin-left: 1rem; }
+        .nav a:hover { color: var(--text); }
+        .brand { display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; color: var(--text); text-decoration:none; }
+        .brand .logo { width: 34px; height: 34px; border-radius: 10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--primary), var(--accent)); color:white; font-weight:900; }
+
+        .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius: 12px; border:1px solid rgba(148,163,184,.25); color: var(--text); text-decoration:none; font-weight:600; background: color-mix(in oklab, var(--surface) 70%, transparent); }
+        .btn:hover { border-color: rgba(148,163,184,.45); }
+        .btn.primary { background: linear-gradient(135deg, var(--primary), var(--accent)); border: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+
+        /* Project detail specific styles */
+        .project-details { padding: 4rem 0; }
+        .project-details h1 { font-size: 2.5rem; margin-top: 0; }
+        .project-details h2 { font-size: 1.6rem; border-bottom: 1px solid rgba(148,163,184,.25); padding-bottom: .3rem; margin-top: 2rem; }
+        .project-details h3 { font-size: 1.2rem; margin-top: 1.5rem; }
+        .project-details p { margin-bottom: 1.2rem; }
+        .project-details ul { list-style: disc; margin-left: 1.5rem; margin-bottom: 1.2rem; }
+        .project-details table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+        .project-details th, .project-details td { border: 1px solid rgba(148,163,184,.25); padding: 0.75rem; text-align: left; }
+        .project-details th { background: var(--surface); color: var(--primary); }
+        .project-details code { background: var(--surface); padding: 2px 4px; border-radius: 4px; font-family: monospace; }
+        .project-details strong { color: var(--primary); }
+        .project-details .github-link { margin-top: 1.5rem; display: inline-block; }
+
+
+        footer { border-top: 1px solid rgba(148,163,184,.15); padding: 2rem 0; color: var(--muted); }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="index.html"> <span class="logo">EC</span>
+                <span>Evan Cwikla</span>
+            </a>
+            <nav class="row">
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+                <a class="btn" id="themeToggle" role="button" aria-label="Toggle theme">🌗</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-details">
+            <a class="btn" href="index.html">← Back to Home</a>
+            
+            <h1>Pygame Puzzle-Adventure Game</h1>
+            <p class="muted" style="margin-bottom: 2rem;">**Python • Pygame • Object-Oriented Programming (OOP) • Algorithms**</p>
+            
+            <p>This project is a **2D grid-based puzzle game** developed in **Python** using the **Pygame** library. It is designed to demonstrate mastery of **Object-Oriented Programming (OOP)** concepts, modular level design, and the implementation of complex, interconnected game mechanics.</p>
+
+            <p>The player progresses through a series of levels that sequentially introduce new objects and rules, culminating in a final stage that integrates all learned mechanisms.</p>
+
+            <h2>⚙️ Key Technical Highlights</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Technical Implementation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**Modular Architecture**</td>
+                        <td>Use of clean OOP classes (<code>Level</code>, <code>Player</code>, <code>Mirror</code>, <code>Gear</code>, etc.) with a base <code>Level</code> class to ensure **separation of concerns** and ease of extension.</td>
+                    </tr>
+                    <tr>
+                        <td>**Reflection Logic**</td>
+                        <td>Implementation of a dynamic **Light Beam** system (<code>LightBeam</code>) that calculates its path in real-time, using the mirror's **<code>angle</code>** attribute (45° or 135°) to determine the reflection direction.</td>
+                    </tr>
+                    <tr>
+                        <td>**AI and Pathfinding**</td>
+                        <td>The **Chaser Enemy** (<code>ChaserEnemy</code>) utilizes a search algorithm (A-star or BFS type) to track the player, dynamically accounting for all obstacles (walls, rocks, mirrors) in its path calculations.</td>
+                    </tr>
+                    <tr>
+                        <td>**Complex Interactions**</td>
+                        <td>Handling collisions for inter-object interaction: pushing **Boulders** onto **Pressure Plates**, which in turn trigger the activation of other mechanisms (like the light beam).</td>
+                    </tr>
+                    <tr>
+                        <td>**Dynamic Hazards**</td>
+                        <td>Implementation of timed hazards (like **Bridges** that alternate between solid and open) and collision hazards (rotating **Gears**), requiring precise management of game timing (cooldowns and timers).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>🌟 Level Overview</h2>
+            <p>The game features **8 progressive levels** (from Level 3 to Level 8), where the final stages test the player's ability to combine all the established rules.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Primary Mechanism Introduced</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**Level 4**</td>
+                        <td>**Mirrors** and **Light Beam** (Spatial logic).</td>
+                    </tr>
+                    <tr>
+                        <td>**Level 5**</td>
+                        <td>**Chaser Enemy** (Evasion and pathfinding).</td>
+                    </tr>
+                    <tr>
+                        <td>**Level 6**</td>
+                        <td>**Boulders** and **Pressure Plates** (Object manipulation and logic gates).</td>
+                    </tr>
+                    <tr>
+                        <td>**Level 7**</td>
+                        <td>**Gears** (Timing hazard and movement precision).</td>
+                    </tr>
+                    <tr>
+                        <td>**Level 8**</td>
+                        <td>**Synthesis** (Integration of all mechanics into a complex final puzzle).</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <a class="btn primary github-link" href="YOUR_GITHUB_REPO_LINK" target="_blank">View Code on GitHub &rarr;</a>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year-footer"></span> Evan Cwikla. Built with vanilla HTML/CSS/JS.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year-footer').textContent = new Date().getFullYear(); // Update ID to avoid conflict
+
+        // THEME TOGGLE SCRIPT (re-pasted for functional consistency)
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if(saved){ root.setAttribute('data-theme', saved); }
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', current);
+            localStorage.setItem('theme', current);
+        });
+        if(!saved){
+            const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>
