@@ -1,204 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Evan Cwikla — Portfolio</title>
-  <meta name="description" content="Personal site and portfolio." />
-  <meta property="og:title" content="Evan Cwikla — Portfolio" />
-  <meta property="og:description" content="Personal site and portfolio." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐙</text></svg>">
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --surface: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --primary: #60a5fa;
-      --accent: #a78bfa;
-      --ring: rgba(96,165,250,.35);
-      --card: #0f172a;
-    }
-    [data-theme="light"]{
-      --bg: #f7fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --primary: #2563eb;
-      --accent: #7c3aed;
-      --ring: rgba(37,99,235,.25);
-      --card: #ffffff;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Evan Cwikla — Portfolio</title>
+    <meta name="description" content="Personal site and portfolio." />
+    <meta property="og:title" content="Evan Cwikla — Portfolio" />
+    <meta property="og:description" content="Personal site and portfolio." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐙</text></svg>">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --surface: #111827;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --primary: #60a5fa;
+            --accent: #a78bfa;
+            --ring: rgba(96,165,250,.35);
+            --card: #0f172a;
+        }
+        [data-theme="light"]{
+            --bg: #f7fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --primary: #2563eb;
+            --accent: #7c3aed;
+            --ring: rgba(37,99,235,.25);
+            --card: #ffffff;
+        }
 
-    * { box-sizing:border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.15), transparent 60%),
-                  radial-gradient(900px 500px at 110% 10%, rgba(167,139,250,.15), transparent 60%),
-                  var(--bg);
-      line-height: 1.6;
-    }
+        * { box-sizing:border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.15), transparent 60%),
+                         radial-gradient(900px 500px at 110% 10%, rgba(167,139,250,.15), transparent 60%),
+                         var(--bg);
+            line-height: 1.6;
+        }
 
-    .container { max-width: 1100px; padding: 0 1rem; margin: 0 auto; }
-    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid rgba(148,163,184,.15); }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding: .75rem 0; }
-    .nav a { color: var(--muted); text-decoration:none; font-weight:600; margin-left: 1rem; }
-    .nav a:hover { color: var(--text); }
-    .brand { display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; color: var(--text); text-decoration:none; }
-    .brand .logo { width: 34px; height: 34px; border-radius: 10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--primary), var(--accent)); color:white; font-weight:900; }
+        .container { max-width: 1100px; padding: 0 1rem; margin: 0 auto; }
+        header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid rgba(148,163,184,.15); }
+        .nav { display:flex; align-items:center; justify-content:space-between; padding: .75rem 0; }
+        .nav a { color: var(--muted); text-decoration:none; font-weight:600; margin-left: 1rem; }
+        .nav a:hover { color: var(--text); }
+        .brand { display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; color: var(--text); text-decoration:none; }
+        .brand .logo { width: 34px; height: 34px; border-radius: 10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--primary), var(--accent)); color:white; font-weight:900; }
 
-    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius: 12px; border:1px solid rgba(148,163,184,.25); color: var(--text); text-decoration:none; font-weight:600; background: color-mix(in oklab, var(--surface) 70%, transparent); }
-    .btn:hover { border-color: rgba(148,163,184,.45); }
-    .btn.primary { background: linear-gradient(135deg, var(--primary), var(--accent)); border: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+        .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius: 12px; border:1px solid rgba(148,163,184,.25); color: var(--text); text-decoration:none; font-weight:600; background: color-mix(in oklab, var(--surface) 70%, transparent); }
+        .btn:hover { border-color: rgba(148,163,184,.45); }
+        .btn.primary { background: linear-gradient(135deg, var(--primary), var(--accent)); border: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+        /* New button style for project cards */
+        .btn.secondary { background: var(--surface); color: var(--primary); border: 1px solid var(--primary); font-weight: 700; margin-top: .5rem;}
+        .btn.secondary:hover { background: color-mix(in oklab, var(--surface) 90%, var(--primary)); }
 
-    .hero { padding: 4rem 0 2rem; display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; }
-    .hero h1 { font-size: clamp(2.2rem, 2.5vw + 1.2rem, 3.5rem); line-height: 1.15; margin:.25rem 0; }
-    .gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .tagline { color: var(--muted); font-size: 1.1rem; }
-    .hero .actions { display:flex; gap:.8rem; margin-top: 1rem; flex-wrap: wrap; }
-    .avatar { width: 160px; height: 160px; border-radius: 20px; background: var(--card); border:1px solid rgba(148,163,184,.25); box-shadow: 0 10px 30px rgba(0,0,0,.25); display:grid; place-items:center; font-size: 64px; }
 
-    section { padding: 3rem 0; }
-    h2 { font-size: 1.6rem; margin: 0 0 1rem; }
+        .hero { padding: 4rem 0 2rem; display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; }
+        .hero h1 { font-size: clamp(2.2rem, 2.5vw + 1.2rem, 3.5rem); line-height: 1.15; margin:.25rem 0; }
+        .gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .tagline { color: var(--muted); font-size: 1.1rem; }
+        .hero .actions { display:flex; gap:.8rem; margin-top: 1rem; flex-wrap: wrap; }
+        .avatar { width: 160px; height: 160px; border-radius: 20px; background: var(--card); border:1px solid rgba(148,163,184,.25); box-shadow: 0 10px 30px rgba(0,0,0,.25); display:grid; place-items:center; font-size: 64px; }
 
-    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
-    .card { grid-column: span 12; border:1px solid rgba(148,163,184,.25); border-radius: 16px; padding:1rem; background: var(--card); transition: transform .15s ease, box-shadow .15s ease; }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.25); }
-    .card h3 { margin:.2rem 0 .4rem; font-size:1.1rem; }
-    .card p { color: var(--muted); margin:0; }
+        section { padding: 3rem 0; }
+        h2 { font-size: 1.6rem; margin: 0 0 1rem; }
 
-    @media (min-width: 700px){
-      .card { grid-column: span 6; }
-    }
-    @media (min-width: 1000px){
-      .card { grid-column: span 4; }
-    }
+        .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+        .card { grid-column: span 12; border:1px solid rgba(148,163,184,.25); border-radius: 16px; padding:1.5rem; background: var(--card); transition: transform .15s ease, box-shadow .15s ease; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+        .card h3 { margin:.2rem 0 .4rem; font-size:1.4rem; }
+        .card p { color: var(--muted); margin:0; }
+        .card .tags { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+        .card .description-short { font-size: 1rem; margin-bottom: 1rem; color: var(--text);}
 
-    footer { border-top: 1px solid rgba(148,163,184,.15); padding: 2rem 0; color: var(--muted); }
 
-    /* Contact styling */
-    .contact-info p { margin: 0.3rem 0; }
-    .contact-info a { color: var(--primary); text-decoration: none; }
-    .contact-info a:hover { text-decoration: underline; }
-  </style>
+        @media (min-width: 700px){
+            .card { grid-column: span 6; }
+        }
+        @media (min-width: 1000px){
+            .card { grid-column: span 4; }
+        }
+
+        footer { border-top: 1px solid rgba(148,163,184,.15); padding: 2rem 0; color: var(--muted); }
+
+        /* Contact styling */
+        .contact-info p { margin: 0.3rem 0; }
+        .contact-info a { color: var(--primary); text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">
-        <span class="logo">EC</span>
-        <span>Evan Cwikla</span>
-      </a>
-      <nav class="row">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="btn" id="themeToggle" role="button" aria-label="Toggle theme">🌗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section id="home" class="hero">
-      <div>
-        <p class="muted">Hello, I'm</p>
-        <h1><span class="gradient">Evan Cwikla</span></h1>
-        <p class="tagline"> </p>
-        <div class="actions">
-          <a class="btn primary" href="#projects">See Projects</a>
-          <a class="btn" href="#contact">Get in Touch</a>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="#home">
+                <span class="logo">EC</span>
+                <span>Evan Cwikla</span>
+            </a>
+            <nav class="row">
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a class="btn" id="themeToggle" role="button" aria-label="Toggle theme">🌗</a>
+            </nav>
         </div>
-      </div>
-      <div class="avatar" aria-hidden="true">💻</div>
-    </section>
+    </header>
 
-    <section id="projects">
-      <h2>Featured Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Pygame Puzzle-Adventure Game</h3>
-          <p>This project is a **2D grid-based puzzle game** developed in **Python** using the **Pygame** library. It is designed to demonstrate mastery of **Object-Oriented Programming (OOP)** concepts, modular level design, and the implementation of complex, interconnected game mechanics.
+    <main class="container">
+        <section id="home" class="hero">
+            <div>
+                <p class="muted">Hello, I'm</p>
+                <h1><span class="gradient">Evan Cwikla</span></h1>
+                <p class="tagline">Aspiring developer focusing on object-oriented design and clean code architecture.</p>
+                <div class="actions">
+                    <a class="btn primary" href="#projects">See Projects</a>
+                    <a class="btn" href="#contact">Get in Touch</a>
+                </div>
+            </div>
+            <div class="avatar" aria-hidden="true">💻</div>
+        </section>
 
-The player progresses through a series of levels that sequentially introduce new objects and rules, culminating in a final stage that integrates all learned mechanisms.
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="grid">
+                
+                <article class="card">
+                    <h3>Pygame Puzzle-Adventure Game</h3>
+                    <span class="tags">Python • Pygame • OOP • Algorithms</span>
+                    <p class="description-short">A complex, 2D grid-based game demonstrating object-oriented design, dynamic obstacle handling (Gears, Bridges), and AI pathfinding for a Chaser Enemy. Features multi-stage puzzles using Light Beams and Mirrors.</p>
+                    <a class="btn secondary" href="pygame-game.html">View Project Details &rarr;</a>
+                </article>
+                
+                <article class="card">
+                    <h3>Project Two</h3>
+                    <span class="tags">JavaScript • HTML • CSS</span>
+                    <p class="description-short">Placeholder for another project description.</p>
+                    <a class="btn secondary" href="project-two.html">View Project Details &rarr;</a>
+                </article>
+                
+                <article class="card">
+                    <h3>Project Three</h3>
+                    <span class="tags">Java • Data Structures</span>
+                    <p class="description-short">Placeholder for another project description.</p>
+                    <a class="btn secondary" href="project-three.html">View Project Details &rarr;</a>
+                </article>
+                
+            </div>
+        </section>
 
-## ⚙️ Key Technical Highlights
+        <section id="about">
+            <h2>About</h2>
+            <p>I am a high school student with a strong interest in technology, programming, and design. I focus on writing modular, readable code and understanding the underlying structure of complex systems.</p>
+            <p class="muted">Programming Languages: Java, JavaScript, Python.</p>
+        </section>
 
-| Feature | Technical Implementation |
-| :--- | :--- |
-| **Modular Architecture** | Use of clean OOP classes (`Level`, `Player`, `Mirror`, `Gear`, etc.) with a base `Level` class to ensure **separation of concerns** and ease of extension. |
-| **Reflection Logic** | Implementation of a dynamic **Light Beam** system (`LightBeam`) that calculates its path in real-time, using the mirror's **`angle`** attribute (45° or 135°) to determine the reflection direction. |
-| **AI and Pathfinding** | The **Chaser Enemy** (`ChaserEnemy`) utilizes a search algorithm (A-star or BFS type) to track the player, dynamically accounting for all obstacles (walls, rocks, mirrors) in its path calculations. |
-| **Complex Interactions** | Handling collisions for inter-object interaction: pushing **Boulders** onto **Pressure Plates**, which in turn trigger the activation of other mechanisms (like the light beam). |
-| **Dynamic Hazards** | Implementation of timed hazards (like **Bridges** that alternate between solid and open) and collision hazards (rotating **Gears**), requiring precise management of game timing (cooldowns and timers). |
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:evan.cwikla11@gmail.com">evan.cwikla11@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/evan-cwikla" target="_blank">linkedin.com/in/evan-cwikla</a></p>
+                <p>Phone: <a href="tel:8479702334">847-970-2334</a></p>
+            </div>
+        </section>
+    </main>
 
-## 🌟 Level Overview
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> Evan Cwikla. Built with vanilla HTML/CSS/JS.</p>
+        </div>
+    </footer>
 
-The game features **8 progressive levels** (from Level 3 to Level 8), where the final stages test the player's ability to combine all the established rules.
-
-| Level | Primary Mechanism Introduced |
-| :--- | :--- |
-| **Level 4** | **Mirrors** and **Light Beam** (Spatial logic). |
-| **Level 5** | **Chaser Enemy** (Evasion and pathfinding). |
-| **Level 6** | **Boulders** and **Pressure Plates** (Object manipulation and logic gates). |
-| **Niveau 7** | **Gears** (Timing hazard and movement precision). |
-| **Niveau 8** | **Synthesis** (Integration of all mechanics into a complex final puzzle). |
-
-This project demonstrates my ability to design a complete game system, manage complex object interactions, and debug grid-based mechanics.</p>
-        </article>
-        <article class="card">
-          <h3>Project Two</h3>
-          <p></p>
-        </article>
-        <article class="card">
-          <h3>Project Three</h3>
-          <p></p>
-        </article>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>I am a high school student with a strong interest in technology, programming, and design.</p>
-      <p class="muted">Programming Languages: Java, JavaScript.</p>
-    </section>
-
-    <!-- Contact section -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-info">
-        <p>Email: <a href="mailto:evan.cwikla11@gmail.com">evan.cwikla11@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/evan-cwikla" target="_blank">linkedin.com/in/evan-cwikla</a></p>
-        <p>Phone: <a href="tel:8479702334">847-970-2334</a></p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Evan Cwikla. Built with vanilla HTML/CSS/JS.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const root = document.documentElement;
-    const saved = localStorage.getItem('theme');
-    if(saved){ root.setAttribute('data-theme', saved); }
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', current);
-      localStorage.setItem('theme', current);
-    });
-    if(!saved){
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
-    }
-  </script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if(saved){ root.setAttribute('data-theme', saved); }
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', current);
+            localStorage.setItem('theme', current);
+        });
+        if(!saved){
+            const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
+        }
+    </script>
 </body>
 </html>
-
