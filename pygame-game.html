@@ -70,7 +70,27 @@
         .project-details code { background: var(--surface); padding: 2px 4px; border-radius: 4px; font-family: monospace; }
         .project-details strong { color: var(--primary); }
         .project-details .github-link { margin-top: 1.5rem; display: inline-block; }
-
+        
+        /* Video Container Styling for Responsive Embed */
+        .video-container { 
+            position: relative; 
+            width: 100%; 
+            height: 0; 
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 2rem 0; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,.35);
+            background: black; /* Background for loading state */
+        }
+        .video-container video {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
 
         footer { border-top: 1px solid rgba(148,163,184,.15); padding: 2rem 0; color: var(--muted); }
 
@@ -100,6 +120,13 @@
             
             <p>This project is a **2D grid-based puzzle game** developed in **Python** using the **Pygame** library. It is designed to demonstrate mastery of **Object-Oriented Programming (OOP)** concepts, modular level design, and the implementation of complex, interconnected game mechanics.</p>
 
+            <div class="video-container">
+                <video controls loop muted autoplay>
+                    <source src="PygameProjectVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                    <img src="path/to/project_screenshot.png" alt="Screenshot of the Pygame game in action" style="width:100%; height:100%; object-fit:cover;">
+                </video>
+            </div>
             <p>The player progresses through a series of levels that sequentially introduce new objects and rules, culminating in a final stage that integrates all learned mechanisms.</p>
 
             <h2>⚙️ Key Technical Highlights</h2>
@@ -122,7 +149,7 @@
                     </tr>
                     <tr>
                         <td>**AI and Pathfinding**</td>
-                        <td>The **Chaser Enemy** (<code>ChaserEnemy</code>) utilizes a search algorithm (A-star or BFS type) to track the player, dynamically accounting for all obstacles (walls, rocks, mirrors) in its path calculations.</td>
+                        <td>The **Chaser Enemy** (<code>ChaserEnemy</code>) utilizes the **A*-Search Algorithm** to track the player, dynamically accounting for all obstacles (walls, rocks, mirrors) in its path calculations, demonstrating graph traversal proficiency.</td>
                     </tr>
                     <tr>
                         <td>**Complex Interactions**</td>
@@ -134,6 +161,18 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h2>🧩 Challenges & Solutions</h2>
+            <h3>Real-Time Light Beam Reflection</h3>
+            <p>The most significant technical challenge was designing the **Light Beam Reflection Logic**. Because the mirrors can be rotated by the player, the light beam's path must be calculated on every frame, chaining reflections across multiple mirrors until it hits a wall or the target receiver.</p>
+            <ul>
+                <li>**Solution:** A **recursive function** was implemented within the <code>LightBeam</code> class. This function efficiently handles the reflection loop: it takes the beam's current position and direction, checks for a collision with a mirror, calculates the new angle based on the mirror's orientation (45° or 135°), and calls itself to continue the beam until termination.</li>
+            </ul>
+            <h3>Object and Collision Management</h3>
+            <p>Managing the collision bounds and interaction logic for the many different types of objects (player, rocks, enemies, gears, light beams) required a highly organized approach to avoid complex, monolithic code. </p>
+            <ul>
+                <li>**Solution:** Strict adherence to OOP principles. All interactive objects inherit from a common **Base Object Class**, overriding methods like <code>update()</code> and <code>handle_collision()</code> to manage their unique behaviors, keeping the main game loop clean and maintainable.</li>
+            </ul>
 
             <h2>🌟 Level Overview</h2>
             <p>The game features **8 progressive levels** (from Level 3 to Level 8), where the final stages test the player's ability to combine all the established rules.</p>
@@ -181,9 +220,9 @@
     </footer>
 
     <script>
-        document.getElementById('year-footer').textContent = new Date().getFullYear(); // Update ID to avoid conflict
+        document.getElementById('year-footer').textContent = new Date().getFullYear(); 
 
-        // THEME TOGGLE SCRIPT (re-pasted for functional consistency)
+        // THEME TOGGLE SCRIPT 
         const root = document.documentElement;
         const saved = localStorage.getItem('theme');
         if(saved){ root.setAttribute('data-theme', saved); }
