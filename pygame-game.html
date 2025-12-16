@@ -70,25 +70,25 @@
         .project-details code { background: var(--surface); padding: 2px 4px; border-radius: 4px; font-family: monospace; }
         .project-details strong { color: var(--primary); }
         .project-details .github-link { margin-top: 1.5rem; display: inline-block; }
-        
+
         /* Video Container Styling for Responsive Embed */
-        .video-container { 
-            position: relative; 
-            width: 100%; 
-            height: 0; 
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            margin: 2rem 0; 
-            border-radius: 12px; 
-            overflow: hidden; 
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,.35);
             background: black; /* Background for loading state */
         }
         .video-container video {
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -114,11 +114,11 @@
     <main class="container">
         <section class="project-details">
             <a class="btn" href="index.html">← Back to Home</a>
-            
+
             <h1>Pygame Puzzle-Adventure Game</h1>
             <p class="muted" style="margin-bottom: 2rem;">**Python • Pygame • Object-Oriented Programming (OOP) • Algorithms**</p>
-            
-            <p>This project is a **2D grid-based puzzle game** developed in **Python** using the **Pygame** library. It is designed to demonstrate mastery of **Object-Oriented Programming (OOP)** concepts, modular level design, and the implementation of complex, interconnected game mechanics.</p>
+
+            <p>This project is a **2D grid-based puzzle game** developed in **Python** using the **Pygame** library. It was specifically built to demonstrate strong command of **Object-Oriented Programming (OOP)**, modular level design, and the implementation of complex, interconnected game mechanics and algorithms.</p>
 
             <div class="video-container">
                 <video controls loop muted autoplay>
@@ -130,7 +130,7 @@
             <p>The player progresses through a series of levels that sequentially introduce new objects and rules, culminating in a final stage that integrates all learned mechanisms.</p>
 
             <h2>⚙️ Key Technical Highlights</h2>
-            
+
             <table>
                 <thead>
                     <tr>
@@ -141,42 +141,42 @@
                 <tbody>
                     <tr>
                         <td>**Modular Architecture**</td>
-                        <td>Use of clean OOP classes (<code>Level</code>, <code>Player</code>, <code>Mirror</code>, <code>Gear</code>, etc.) with a base <code>Level</code> class to ensure **separation of concerns** and ease of extension.</td>
+                        <td>A robust OOP structure utilizing dedicated classes (<code>Level</code>, <code>Player</code>, <code>Mirror</code>, <code>Gear</code>, etc.). This design enforces **separation of concerns**, making the codebase maintainable and easily extensible.</td>
                     </tr>
                     <tr>
                         <td>**Reflection Logic**</td>
-                        <td>Implementation of a dynamic **Light Beam** system (<code>LightBeam</code>) that calculates its path in real-time, using the mirror's **<code>angle</code>** attribute (45° or 135°) to determine the reflection direction.</td>
+                        <td>Implementation of a dynamic **Light Beam** system (<code>LightBeam</code>) with recursive path calculation. The system determines the beam's next path based on the mirror's precise **<code>angle</code>** (45° or 135°), simulating real-time light reflection.</td>
                     </tr>
                     <tr>
-                        <td>**AI and Pathfinding**</td>
-                        <td>The **Chaser Enemy** (<code>ChaserEnemy</code>) utilizes the **A*-Search Algorithm** to track the player, dynamically accounting for all obstacles (walls, rocks, mirrors) in its path calculations, demonstrating graph traversal proficiency.</td>
+                        <td>**Advanced AI and Pathfinding**</td>
+                        <td>The **Chaser Enemy** (<code>ChaserEnemy</code>) utilizes the **A*-Search Algorithm** to dynamically calculate the optimal path to the player, while efficiently navigating around all map obstacles.</td>
                     </tr>
                     <tr>
                         <td>**Complex Interactions**</td>
-                        <td>Handling collisions for inter-object interaction: pushing **Boulders** onto **Pressure Plates**, which in turn trigger the activation of other mechanisms (like the light beam).</td>
+                        <td>Managed inter-object interaction, such as the physics-based movement of **Boulders** and their interaction with **Pressure Plates**, which activate conditional level mechanics.</td>
                     </tr>
                     <tr>
                         <td>**Dynamic Hazards**</td>
-                        <td>Implementation of timed hazards (like **Bridges** that alternate between solid and open) and collision hazards (rotating **Gears**), requiring precise management of game timing (cooldowns and timers).</td>
+                        <td>Precise management of game timing and collision logic for hazards, including rotating **Gears** and alternating **Bridges**, requiring the use of cooldowns and timer systems.</td>
                     </tr>
                 </tbody>
             </table>
 
             <h2>🧩 Challenges & Solutions</h2>
             <h3>Real-Time Light Beam Reflection</h3>
-            <p>The most significant technical challenge was designing the **Light Beam Reflection Logic**. Because the mirrors can be rotated by the player, the light beam's path must be calculated on every frame, chaining reflections across multiple mirrors until it hits a wall or the target receiver.</p>
+            <p>The most significant technical challenge was designing the **Light Beam Reflection Logic**. Because the mirrors can be rotated by the player in real-time, the light beam's path must be calculated on every frame, chaining reflections across multiple mirrors until it hits a wall or the target receiver.</p>
             <ul>
                 <li>**Solution:** A **recursive function** was implemented within the <code>LightBeam</code> class. This function efficiently handles the reflection loop: it takes the beam's current position and direction, checks for a collision with a mirror, calculates the new angle based on the mirror's orientation (45° or 135°), and calls itself to continue the beam until termination.</li>
             </ul>
             <h3>Object and Collision Management</h3>
             <p>Managing the collision bounds and interaction logic for the many different types of objects (player, rocks, enemies, gears, light beams) required a highly organized approach to avoid complex, monolithic code. </p>
             <ul>
-                <li>**Solution:** Strict adherence to OOP principles. All interactive objects inherit from a common **Base Object Class**, overriding methods like <code>update()</code> and <code>handle_collision()</code> to manage their unique behaviors, keeping the main game loop clean and maintainable.</li>
+                <li>**Solution:** Strict adherence to OOP principles. All interactive objects inherit from a common **Base Object Class**, overriding methods like <code>update()</code> and <code>handle_collision()</code> to manage their unique behaviors, ensuring the main game loop remains clean and maintainable.</li>
             </ul>
 
             <h2>🌟 Level Overview</h2>
             <p>The game features **8 progressive levels** (from Level 3 to Level 8), where the final stages test the player's ability to combine all the established rules.</p>
-            
+
             <table>
                 <thead>
                     <tr>
@@ -207,8 +207,8 @@
                     </tr>
                 </tbody>
             </table>
-            
-            <a class="btn primary github-link" href="YOUR_GITHUB_REPO_LINK" target="_blank">View Code on GitHub &rarr;</a>
+
+            <a class="btn primary github-link" href="https://github.com/EvanCwikla/EvanCwiklaProject.git.io" target="_blank">View Code on GitHub &rarr;</a>
 
         </section>
     </main>
@@ -220,9 +220,9 @@
     </footer>
 
     <script>
-        document.getElementById('year-footer').textContent = new Date().getFullYear(); 
+        document.getElementById('year-footer').textContent = new Date().getFullYear();
 
-        // THEME TOGGLE SCRIPT 
+        // THEME TOGGLE SCRIPT
         const root = document.documentElement;
         const saved = localStorage.getItem('theme');
         if(saved){ root.setAttribute('data-theme', saved); }
