@@ -11,7 +11,7 @@
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐙</text></svg>">
     <style>
-        /* Re-paste all your CSS here or link to an external CSS file */
+        /* CSS Variables */
         :root {
             --bg: #0b0f19;
             --surface: #111827;
@@ -33,6 +33,7 @@
             --card: #ffffff;
         }
 
+        /* Base Styles */
         * { box-sizing:border-box; }
         html, body { height: 100%; }
         body {
@@ -116,9 +117,9 @@
             <a class="btn" href="index.html">← Back to Home</a>
 
             <h1>Pygame Puzzle-Adventure Game</h1>
-            <p class="muted" style="margin-bottom: 2rem;">**Python • Pygame • Object-Oriented Programming (OOP) • Algorithms**</p>
+            <p class="muted" style="margin-bottom: 2rem;">**Python • Pygame • Object-Oriented Design (OOP) • Algorithms • Game Engine**</p>
 
-            <p>This project is a **2D grid-based puzzle game** developed in **Python** using the **Pygame** library. It was specifically built to demonstrate strong command of **Object-Oriented Programming (OOP)**, modular level design, and the implementation of complex, interconnected game mechanics and algorithms.</p>
+            <p>This project is a **top-down, 2D tile-based puzzle-adventure game** developed in **Python** using the **Pygame** library. Its primary goal was to create a complete, multi-level game experience from the ground up, demonstrating a **scalable engine** and a wide variety of integrated gameplay mechanics.</p>
 
             <div class="video-container">
                 <video controls loop muted autoplay>
@@ -127,9 +128,9 @@
                     <img src="path/to/project_screenshot.png" alt="Screenshot of the Pygame game in action" style="width:100%; height:100%; object-fit:cover;">
                 </video>
             </div>
-            <p>The player progresses through a series of levels that sequentially introduce new objects and rules, culminating in a final stage that integrates all learned mechanisms.</p>
+            <p>The "problem" solved by this architecture is the challenge of seamlessly integrating diverse puzzle types (logic, timing, memory, physics) and action elements (enemy AI, hazards) into a single, cohesive game framework.</p>
 
-            <h2>⚙️ Key Technical Highlights</h2>
+            <h2>⚙️ Core Technical Architecture</h2>
 
             <table>
                 <thead>
@@ -140,70 +141,79 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>**Modular Architecture**</td>
-                        <td>A robust OOP structure utilizing dedicated classes (<code>Level</code>, <code>Player</code>, <code>Mirror</code>, <code>Gear</code>, etc.). This design enforces **separation of concerns**, making the codebase maintainable and easily extensible.</td>
+                        <td>**Scalable Level Engine**</td>
+                        <td>The <code>main.py</code> file acts as the game's shell, using a Level Manager to dynamically load self-contained level classes (e.g., <code>Level1</code>, <code>Level2</code>) from the <code>levels/</code> directory. This allows for **easy, modular expansion** and level creation.</td>
                     </tr>
                     <tr>
-                        <td>**Reflection Logic**</td>
-                        <td>Implementation of a dynamic **Light Beam** system (<code>LightBeam</code>) with recursive path calculation. The system determines the beam's next path based on the mirror's precise **<code>angle</code>** (45° or 135°), simulating real-time light reflection.</td>
+                        <td>**Centralized Game Objects**</td>
+                        <td>The <code>game_objects.py</code> file defines all interactive elements as classes, ensuring they are **reusable, self-contained units** that enforce the single responsibility principle.</td>
                     </tr>
                     <tr>
-                        <td>**Advanced AI and Pathfinding**</td>
-                        <td>The **Chaser Enemy** (<code>ChaserEnemy</code>) utilizes the **A*-Search Algorithm** to dynamically calculate the optimal path to the player, while efficiently navigating around all map obstacles.</td>
+                        <td>**Dynamic Player Controller**</td>
+                        <td>The <code>Player</code> class handles all movement and collision and supports two distinct movement paradigms:
+                            <ul>
+                                <li>**Hold-to-Move:** Smooth, continuous movement for action/timing levels.</li>
+                                <li>**Press-per-Move:** A turn-based, grid-locked system essential for precise, Sokoban-style **Boulder** puzzles (used in Levels 5 and 8).</li>
+                            </ul>
+                        </td>
                     </tr>
                     <tr>
-                        <td>**Complex Interactions**</td>
-                        <td>Managed inter-object interaction, such as the physics-based movement of **Boulders** and their interaction with **Pressure Plates**, which activate conditional level mechanics.</td>
-                    </tr>
-                    <tr>
-                        <td>**Dynamic Hazards**</td>
-                        <td>Precise management of game timing and collision logic for hazards, including rotating **Gears** and alternating **Bridges**, requiring the use of cooldowns and timer systems.</td>
+                        <td>**AI and Pathfinding**</td>
+                        <td>Implementation of intelligent hazards like <code>PatrolEnemy</code> and <code>ChaserEnemy</code>, with the latter using a simple pathfinding **AI** to dynamically track the player across the grid.</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h2>🧩 Challenges & Solutions</h2>
-            <h3>Real-Time Light Beam Reflection</h3>
-            <p>The most significant technical challenge was designing the **Light Beam Reflection Logic**. Because the mirrors can be rotated by the player in real-time, the light beam's path must be calculated on every frame, chaining reflections across multiple mirrors until it hits a wall or the target receiver.</p>
+            <h2>✨ Key Game Mechanics Demonstrated</h2>
+            <p>The system incorporates a wide range of mechanics—from static puzzle elements to dynamic hazards—all managed by their respective classes:</p>
             <ul>
-                <li>**Solution:** A **recursive function** was implemented within the <code>LightBeam</code> class. This function efficiently handles the reflection loop: it takes the beam's current position and direction, checks for a collision with a mirror, calculates the new angle based on the mirror's orientation (45° or 135°), and calls itself to continue the beam until termination.</li>
-            </ul>
-            <h3>Object and Collision Management</h3>
-            <p>Managing the collision bounds and interaction logic for the many different types of objects (player, rocks, enemies, gears, light beams) required a highly organized approach to avoid complex, monolithic code. </p>
-            <ul>
-                <li>**Solution:** Strict adherence to OOP principles. All interactive objects inherit from a common **Base Object Class**, overriding methods like <code>update()</code> and <code>handle_collision()</code> to manage their unique behaviors, ensuring the main game loop remains clean and maintainable.</li>
+                <li>**Hazards:** <code>PatrolEnemy</code> and <code>ChaserEnemy</code> (AI), <code>Bridge</code> (disappears on a timer), and <code>Gear</code> (spinning collision hazard).</li>
+                <li>**Logic Puzzles:** <code>Key</code>, <code>Switch</code> (timed and sequence-based), <code>Mirror</code> (rotatable), and the <code>LightBeam</code> (a dedicated class for real-time collision and reflection logic).</li>
+                <li>**Physics/Manipulation:** <code>Boulder</code> (pushable) and <code>PressurePlate</code> (triggered by the boulder's weight).</li>
             </ul>
 
-            <h2>🌟 Level Overview</h2>
-            <p>The game features **8 progressive levels** (from Level 3 to Level 8), where the final stages test the player's ability to combine all the established rules.</p>
+            <h2>🗺️ Multi-Level Learning Structure (8 MVP Levels)</h2>
+            <p>Each of the eight MVP levels acts as a self-contained module to introduce and test a new mechanic, culminating in a comprehensive "final exam" for the player.</p>
 
             <table>
                 <thead>
                     <tr>
                         <th>Level</th>
-                        <th>Primary Mechanism Introduced</th>
+                        <th>Primary Mechanic Focus</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td>**Level 1**</td>
+                        <td>Maze Navigation & <code>Key</code>/<code>Door</code> (Basic interaction).</td>
+                    </tr>
+                    <tr>
+                        <td>**Level 2**</td>
+                        <td>Timed <code>Switch</code> & <code>Gate</code> (Precision and timing).</td>
+                    </tr>
+                    <tr>
+                        <td>**Level 3**</td>
+                        <td><code>Light Beam</code> & <code>Mirror</code> Puzzle (Spatial logic and reflection).</td>
+                    </tr>
+                    <tr>
                         <td>**Level 4**</td>
-                        <td>**Mirrors** and **Light Beam** (Spatial logic).</td>
+                        <td>Memory/Sequence Puzzle (Logic flow).</td>
                     </tr>
                     <tr>
                         <td>**Level 5**</td>
-                        <td>**Chaser Enemy** (Evasion and pathfinding).</td>
+                        <td><code>Boulder</code> & <code>Pressure Plate</code> Puzzle (Push-box style physics).</td>
                     </tr>
                     <tr>
                         <td>**Level 6**</td>
-                        <td>**Boulders** and **Pressure Plates** (Object manipulation and logic gates).</td>
+                        <td>Timed <code>Bridge</code> Navigation (Dynamic terrain and timing).</td>
                     </tr>
                     <tr>
                         <td>**Level 7**</td>
-                        <td>**Gears** (Timing hazard and movement precision).</td>
+                        <td>Hazard Avoidance (Rotating <code>Gears</code> and enemy paths).</td>
                     </tr>
                     <tr>
                         <td>**Level 8**</td>
-                        <td>**Synthesis** (Integration of all mechanics into a complex final puzzle).</td>
+                        <td>**Synthesis/Final Gauntlet** (Integration of all previous mechanics and movement modes).</td>
                     </tr>
                 </tbody>
             </table>
